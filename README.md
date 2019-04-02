@@ -1,4 +1,4 @@
-This is a revenue management App in which, a group can write it's expense and calculate how much one has to give to another person.
+This is a simple react app for revenue management App in which, a group can write it's expense and calculate how much one has to give to another person, with complete crud operations.
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
