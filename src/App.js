@@ -174,49 +174,51 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>Revenue Management</h1><hr/>
-            <label>Jeemon : </label><input type={'number'} placeholder='Jeemon' id='j' ref="j"/>
-            <label>Ajay : </label><input type={'number'} placeholder='Ajay' id='a' ref="a"/>
-            <label>Kartik : </label><input type={'number'} placeholder='Kartik' id='k' ref="k"/>
+          <div className="form">
+                <h1>Revenue Management</h1><hr/>
+                <label>Jeemon : </label><input type={'number'} placeholder='Jeemon' id='j' ref="j"/>
+                <label>Ajay : </label><input type={'number'} placeholder='Ajay' id='a' ref="a"/>
+                <label>Kartik : </label><input type={'number'} placeholder='Kartik' id='k' ref="k"/>
+          </div>
 
-            <button onClick={() => this.submit()}>Submit</button>
-            <button onClick={() => this.calc()}>Calculate</button>
+            <button onClick={() => this.submit()} className="button">Submit</button>
+            <button onClick={() => this.calc()} className="button">Calculate</button>
         <pre>
             {datas.map((data,i) =>
                 <li key={i}>
                     {data.j},{data.a},{data.k}
-                    <button onClick={() => this.edit(i)}>edit</button>
-                    <button onClick={() => this.delete(i)}>remove</button>
+                    <button className={"listbtn"} onClick={() => this.edit(i)}>edit</button>
+                    <button className={"listbtn"} onClick={() => this.delete(i)}>remove</button>
                 </li>
             )}
         </pre>
           {this.state.check == 1 &&
 
-          <h2>Total Spent :{tots} || Per Person Contribution : {contribution}</h2>
+          <h3>Total Spent :{tots} || Per Person Contribution : {contribution}</h3>
           }
 
               {kj > 0 && kj != undefined &&
-                  <h3>Kartik->Jeemon = {kj}</h3>
+                  <h4>Kartik->Jeemon = {kj}</h4>
               }
 
               {ka > 0 && ka != undefined &&
-                  <h3>Kartik->Ajay = {this.state.ka}</h3>
+                  <h4>Kartik->Ajay = {this.state.ka}</h4>
               }
 
               {aj > 0 && aj != undefined &&
-                  <h3>Ajay->Jeemon = {this.state.aj}</h3>
+                  <h4>Ajay->Jeemon = {this.state.aj}</h4>
               }
 
               {ak > 0 && ak != undefined &&
-                  <h3>Ajay->Kartik = {this.state.ak}</h3>
+                  <h4>Ajay->Kartik = {this.state.ak}</h4>
               }
 
               {ja > 0 && ja != undefined &&
-                  <h3>Jeemon->Ajay = {this.state.ja}</h3>
+                  <h4>Jeemon->Ajay = {this.state.ja}</h4>
               }
 
               {jk > 0 && jk != undefined &&
-                  <h3>Jeemon->Kartik = {this.state.jk}</h3>
+                  <h4>Jeemon->Kartik = {this.state.jk}</h4>
               }
       </div>
     );
