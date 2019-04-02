@@ -19,6 +19,7 @@ class App extends Component {
           jk:0,
           aj:0,
           ak:0,
+          act:0,
           contribution:0
       }
   }
@@ -34,18 +35,36 @@ class App extends Component {
     var k = parseInt(document.getElementById('k').value);
       this.state.k.push(k);
         console.log('kk',this.state.k);
-
-      var data = {
-       k,j,a
-      }
-      datas.push(data);
+        
+        if (this.state.act === 0) {
+            var data = {
+                k, j, a
+            }
+            datas.push(data);
+        }
+        else {
+            let index = this.state.index;
+            datas[index].j=j;
+            datas[index].a=a;
+            datas[index].k=k;
+        }
       this.setState({datas:datas})
       console.log('ssss',this.state.datas);
       console.log(k,j,a);
     }
 
-    edit = () => {
+    edit = (i) => {
+      let data = this.state.datas[i];
+      this.refs.j.value = data.j;
+      this.refs.a.value = data.a;
+      this.refs.k.value = data.k;
 
+      this.setState({
+          act: 1,
+          index: i
+      });
+
+      this.refs.j.focus();
     }
     delete = (i) => {
        var datas = this.state.datas;
@@ -156,9 +175,9 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Revenue Management</h1><hr/>
-          <label>Jeemon : </label><input type={'text'} placeholder='Jeemon' id='j'/>
-            <label>Ajay : </label><input type={'text'} placeholder='Ajay' id='a'/>
-          <label>Kartik : </label><input type={'text'} placeholder='Kartik' id='k'/>
+            <label>Jeemon : </label><input type={'number'} placeholder='Jeemon' id='j' ref="j"/>
+            <label>Ajay : </label><input type={'number'} placeholder='Ajay' id='a' ref="a"/>
+            <label>Kartik : </label><input type={'number'} placeholder='Kartik' id='k' ref="k"/>
 
             <button onClick={() => this.submit()}>Submit</button>
             <button onClick={() => this.calc()}>Calculate</button>
