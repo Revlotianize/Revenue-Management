@@ -1,4 +1,5 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a revenue management App in which, a group can write it's expense and calculate how much one has to give to another person.
 
 ## Available Scripts
 
