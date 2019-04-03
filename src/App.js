@@ -1,26 +1,31 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ReactTable from "react-table";
+import 'react-table/react-table.css';
 
 class App extends Component {
 
   constructor(props){
       super(props);
       this.state={
-        a:[],
-        j:[],
-        k:[],
-        datas:[],
-        check :0,
-        total:0,
-          ka:0,
-          kj:0,
-          ja:0,
-          jk:0,
-          aj:0,
-          ak:0,
-          act:0,
-          contribution:0
+            a:[],
+            j:[],
+            k:[],
+            datas:[],
+            check :0,
+            total:0,
+            ka:0,
+            kj:0,
+            ja:0,
+            jk:0,
+            aj:0,
+            ak:0,
+            act:0,
+            contribution:0,
+            totalkartik:0,
+            totaljeemon:0,
+            totalajay:0
       }
   }
 
@@ -75,6 +80,15 @@ class App extends Component {
 
     calc = () => {
 
+        //state set zero for the edit and delete to show after operation.
+
+        this.state.kj = 0;
+        this.state.ka = 0;
+        this.state.ja = 0;
+        this.state.jk = 0;
+        this.state.aj = 0;
+        this.state.ak = 0;
+
         var flag;
         var response = this.state.datas;
         console.log('respone',response);
@@ -85,17 +99,20 @@ class App extends Component {
             return a;
         }
         response.map(geta);
+        this.setState({totalajay:a})
         console.log('ara',a);
         function getj(item,index) {
             var jj = parseInt([item.j]);
             j=jj+j;
         }
         response.map(getj);
+        this.setState({totaljeemon:j})
         function getk(item,index) {
             var kk = parseInt([item.k]);
             k=k+kk;
         }
         response.map(getk);
+        this.setState({totalkartik:k})
         var givea = -1;
         var givek = -1;
         var givej = -1;
@@ -171,14 +188,17 @@ class App extends Component {
     var aj =this.state.aj;
     var ak =this.state.ak;
     var contribution = this.state.contribution;
+    var kartik = this.state.totalkartik;
+    var jeemon  = this.state.totaljeemon;
+    var ajay = this.state.totalajay;
 
     return (
       <div className="App">
           <div className="form">
                 <h1>Revenue Management</h1><hr/>
-                <label>Jeemon : </label><input type={'number'} placeholder='Jeemon' id='j' ref="j"/>
-                <label>Ajay : </label><input type={'number'} placeholder='Ajay' id='a' ref="a"/>
-                <label>Kartik : </label><input type={'number'} placeholder='Kartik' id='k' ref="k"/>
+                <label>Jeemon : </label><input type={'number'} placeholder='Amount' id='j' ref="j"/>
+                <label>Ajay : </label><input type={'number'} placeholder='Amount' id='a' ref="a"/>
+                <label>Kartik : </label><input type={'number'} placeholder='Amount' id='k' ref="k"/>
           </div>
 
             <button onClick={() => this.submit()} className="button">Submit</button>
@@ -190,11 +210,32 @@ class App extends Component {
                     <button className={"listbtn"} onClick={() => this.edit(i)}>edit</button>
                     <button className={"listbtn"} onClick={() => this.delete(i)}>remove</button>
                 </li>
+
             )}
+            {/*<ReactTable*/}
+                {/*data={datas}*/}
+                {/*{datas.map(data, i) =>*/}
+                    {/*columns={[*/}
+                    {/*{*/}
+                        {/*Header: "Jeemon",*/}
+                        {/*accessor: data.j*/}
+                    {/*},*/}
+                    {/*{*/}
+                        {/*Header: "Ajay",*/}
+                        {/*accessor: data.a*/}
+                    {/*},*/}
+                    {/*{*/}
+                        {/*Header: "Kartik",*/}
+                        {/*accessor: data.k*/}
+                    {/*},*/}
+                {/*]}*/}
+            {/*}*/}
+        {/*/>*/}
         </pre>
           {this.state.check == 1 &&
 
-          <h3>Total Spent :{tots} || Per Person Contribution : {contribution}</h3>
+          <h3>Total Spent :{tots} || Per Person Contribution : {contribution} <br/>Kartik :{kartik}, Jeemon :{jeemon}, Ajay: {ajay}</h3>
+
           }
 
               {kj > 0 && kj != undefined &&
