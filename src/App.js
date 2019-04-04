@@ -212,25 +212,32 @@ class App extends Component {
                 </li>
 
             )}
-            {/*<ReactTable*/}
-                {/*data={datas}*/}
-                {/*{datas.map(data, i) =>*/}
-                    {/*columns={[*/}
-                    {/*{*/}
-                        {/*Header: "Jeemon",*/}
-                        {/*accessor: data.j*/}
-                    {/*},*/}
-                    {/*{*/}
-                        {/*Header: "Ajay",*/}
-                        {/*accessor: data.a*/}
-                    {/*},*/}
-                    {/*{*/}
-                        {/*Header: "Kartik",*/}
-                        {/*accessor: data.k*/}
-                    {/*},*/}
-                {/*]}*/}
-            {/*}*/}
-        {/*/>*/}
+            <ReactTable
+                data={datas}
+                    columns={[
+                    {
+                        Header: "Jeemon",
+                        accessor: 'j'
+                    },
+                    {
+                        Header: "Ajay",
+                        accessor: 'a'
+                    },
+                    {
+                        Header: "Kartik",
+                        accessor: 'k'
+                    },
+                    {
+                        Header: "Actions",
+                        Cell: row => (
+                            <div>
+                                <button className={"listbtn"} onClick={() => this.edit()}>edit</button>
+                                <button className={"listbtn"} onClick={() => this.delete()}>remove</button>
+                            </div>
+                        )
+                    }
+            ]}
+        />
         </pre>
           {this.state.check == 1 &&
 
