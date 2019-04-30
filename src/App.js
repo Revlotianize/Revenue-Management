@@ -32,15 +32,15 @@ class App extends Component {
     submit = () => {
     var datas = this.state.datas;
     var a = parseInt(document.getElementById('a').value);
-      this.state.a.push(a);
+    isNaN(a) ? a=0 :this.state.a.push(a);
       console.log('aa',this.state.a);
     var j = parseInt(document.getElementById('j').value);
-        this.state.j.push(j)
+        isNaN(j) ? j=0 :this.state.j.push(j);
         console.log('jj',this.state.j);
     var k = parseInt(document.getElementById('k').value);
+        isNaN(k) ? k=0 :this.state.k.push(k);
       this.state.k.push(k);
-        console.log('kk',this.state.k);
-        
+       
         if (this.state.act === 0) {
             var data = {
                 k, j, a
