@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import ReactTable from "react-table";
 import 'react-table/react-table.css';
-
+import './style.css';
 class App extends Component {
 
   constructor(props){
@@ -40,7 +40,7 @@ class App extends Component {
     var k = parseInt(document.getElementById('k').value);
         isNaN(k) ? k=0 :this.state.k.push(k);
       this.state.k.push(k);
-       
+
         if (this.state.act === 0) {
             var data = {
                 k, j, a
@@ -56,6 +56,9 @@ class App extends Component {
       this.setState({datas:datas})
       console.log('ssss',this.state.datas);
       console.log(k,j,a);
+      var form = document.getElementById("myForm");
+      form.reset();
+
     }
 
     edit = (i) => {
@@ -178,7 +181,6 @@ class App extends Component {
     }
 
   render() {
-
     var datas = this.state.datas;
     var tots = this.state.total;
     var kj =this.state.kj;
@@ -194,12 +196,14 @@ class App extends Component {
 
     return (
       <div className="App">
-          <div className="form">
-                <h1>Revenue Management</h1><hr/>
-                <label>Jeemon : </label><input type={'number'} placeholder='Amount' id='j' ref="j"/>
-                <label>Ajay : </label><input type={'number'} placeholder='Amount' id='a' ref="a"/>
-                <label>Kartik : </label><input type={'number'} placeholder='Amount' id='k' ref="k"/>
-          </div>
+          <form id="myForm">
+              <div className="form">
+                    <h1>Revenue Management</h1><hr/>
+                    <label className={"resp"}>Kartik : </label><input type={'number'} placeholder='Amount' id='k' ref="k"/><br/>
+                    <label className={"resp"}>Jeemon : </label><input type={'number'} placeholder='Amount' id='j' ref="j"/><br/>
+                    <label className={"resp"}>Ajay : </label><input type={'number'} placeholder='Amount' id='a' ref="a"/><br/>
+              </div>
+          </form>
 
             <button onClick={() => this.submit()} className="button">Submit</button>
             <button onClick={() => this.calc()} className="button">Calculate</button>
